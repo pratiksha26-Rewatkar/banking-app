@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bank.dto.AccountDto;
 import com.bank.entity.AccountDetails;
+import com.bank.exception.AccountNotFound;
 import com.bank.mapper.AccountMapper;
 import com.bank.repository.AccountRepository;
 
@@ -28,7 +29,7 @@ public class AccountService {
 	public AccountDto getAccountDetialsById(Long ID){
 		AccountDetails accountDetails=repository
 				.findById(ID)
-				.orElseThrow(()-> new RuntimeException("Account does not exist"));
+				.orElseThrow(()-> new AccountNotFound("Account does not exist !!!!!!!!!!!!"));
 		
 		return AccountMapper.mapToAccountDto(accountDetails);
 		
@@ -38,7 +39,7 @@ public class AccountService {
 	public AccountDto depositAmount(Long ID , double amount){
 		AccountDetails accountDetails=repository
 				.findById(ID)
-				.orElseThrow(()-> new RuntimeException("Account does not exist"));
+				.orElseThrow(()-> new AccountNotFound("Account does not exist !!!!!!!!!!!!"));
 		
 		double totalAmount = accountDetails.getAccount_balance() + amount;
 		accountDetails.setAccount_balance(totalAmount);

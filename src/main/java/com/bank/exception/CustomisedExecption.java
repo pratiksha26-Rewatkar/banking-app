@@ -24,8 +24,14 @@ public class CustomisedExecption extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserPrincipalNotFoundException.class )
     public final ResponseEntity<Object> handleUserException(Exception ex, WebRequest request) throws Exception {
         ErrorDetails error = new ErrorDetails(LocalDate.now(),ex.getMessage(),request.getDescription(false));
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND); ;;;;;
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(AccountNotFound.class )
+    public final ResponseEntity<Object> accountNotFound(Exception ex, WebRequest request) throws Exception {
+        ErrorDetails error = new ErrorDetails(LocalDate.now(),ex.getMessage(),request.getDescription(false));
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+    
 
 
 }

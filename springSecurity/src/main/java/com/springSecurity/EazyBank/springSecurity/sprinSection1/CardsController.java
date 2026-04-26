@@ -4,10 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ContactController{
+public class CardsController {
 
-    @GetMapping("/contactDetails")
-    public String getContactDetails(){
-        return "Please contact us as soon as possible";
+
+    @GetMapping("/cardDetails")
+    public String getCardDetails(){
+        return "Please find the Details of my account along with the card";
     }
 }
